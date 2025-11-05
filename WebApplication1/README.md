@@ -19,42 +19,46 @@ WebApplication1
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Steps
-1. Clone the repository:
 
-# git clone https://github.com/vyawahareakash2210/Assignment_POC.git
-# cd Assignment_POC
-# cd WebApplication1/
 
-2.Build the Docker image & Run the application using Docker Compose :
+### Steps to Run Application using Docker Containers 
 
-# docker-compose up --build -d
+
+# 1. Clone the repository:
+
+#git clone https://github.com/vyawahareakash2210/Assignment_POC.git
+#cd Assignment_POC
+#cd WebApplication1/
+
+# 2.Build the Docker image & Run the application using Docker Compose :
+
+#docker-compose up --build -d
 
 ![alt text](image.png)
 
-3. Check Running Docker Containers : 
+# 3. Check Running Docker Containers : 
 
-# docker ps
+#docker ps
 ![alt text](image-2.png)
 
-3.Open your browser and navigate to:
+# 4.Open your browser and navigate to:
 
-# http://localhost:8080
+#http://localhost:8080
 
 ![alt text](image-1.png)
 
-4. Access MySQL & Show Databases
+# 5. Access MySQL & Show Databases
 
-# docker exec -it mysqldb bash
-# mysql -u akash -p
-# SHOW DATABASES;
+#docker exec -it mysqldb bash
+#mysql -u akash -p
+#SHOW DATABASES;
 
 
 ![alt text](image-3.png)
 
 
-5. Web App Container Logs 
+# 6. Web App Container Logs 
 
-# docker logs #containerID
+#docker logs #containerID
 
 ![alt text](image-4.png)
