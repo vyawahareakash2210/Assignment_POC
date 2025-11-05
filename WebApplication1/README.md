@@ -27,7 +27,11 @@ WebApplication1
 # 1. Clone the repository:
 
 #git clone https://github.com/vyawahareakash2210/Assignment_POC.git
+
+Change Directory 
 #cd Assignment_POC
+
+Change Directory 
 #cd WebApplication1/
 
 # 2.Build the Docker image & Run the application using Docker Compose :
@@ -59,6 +63,6 @@ WebApplication1
 
 # 6. Web App Container Logs 
 
-#docker logs #containerID
+#docker logs $containerID
 
 ![alt text](image-4.png)
