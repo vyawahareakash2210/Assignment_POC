@@ -2,28 +2,41 @@
 
 This project is a basic **.NET 8 Web Application** using Razor Pages. It demonstrates how to dockerize a .NET application using a `Dockerfile` and `docker-compose`.
 
+
+
+## Overview
+
+This Project Contains  below Files :
+- WebApplication1
+- Dockerfile
+- docker-compose.yaml
+- .dockerignore
+- .env
+
 ## Tech Stack
+
+```sh
 - Docker
 
-## Project Structure
-WebApplication1
-├── Dockerfile
-├── WebApplication1
-├── WebApplication1.sln
-└── docker-compose.yaml
+Web App Base Image : mcr.microsoft.com/dotnet/sdk:8.0
+MySQL Base Image :   mysql:8.0
+
+
+```
+
+
+
 
 ## Installation
 
 ### Prerequisites
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 
 
 ### Steps to Run Application using Docker Containers 
-
-
 
 
 ## **1. Clone the repository**
