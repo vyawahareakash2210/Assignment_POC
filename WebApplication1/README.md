@@ -1,4 +1,4 @@
-# WebApplication1 – ASP.NET Core (.NET 8)
+# Assignment: Dockerize a .NET 8 Application
 
 This project is a basic **.NET 8 Web Application** using Razor Pages. It demonstrates how to dockerize a .NET application using a `Dockerfile` and `docker-compose`.
 
