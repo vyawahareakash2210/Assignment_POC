@@ -24,15 +24,21 @@ WebApplication1
 ### Steps to Run Application using Docker Containers 
 
 
+
+
+## **1. Clone the repository**
+### **Install Terraform**
 # 1. Clone the repository:
 
-#git clone https://github.com/vyawahareakash2210/Assignment_POC.git
 
-Change Directory 
-#cd Assignment_POC
+```sh
+# Linux & macOS
+git clone https://github.com/vyawahareakash2210/Assignment_POC.git
+cd Assignment_POC
+cd WebApplication1/
 
-Change Directory 
-#cd WebApplication1/
+```
+
 
 # 2.Build the Docker image & Run the application using Docker Compose :
 
