@@ -42,15 +42,15 @@ MySQL Base Image :   mysql:8.0
 ## **1. Clone the repository**
 
 ```sh
-git clone https://github.com/vyawahareakash2210/Assignment_POC.git
-cd Assignment_POC
-cd WebApplication1/
+$ git clone https://github.com/vyawahareakash2210/Assignment_POC.git
+$ cd Assignment_POC
+$ cd WebApplication1/
 
 ```
 ## **2. Build the Docker image & Run the application using Docker Compose**
 
 ```sh
-docker-compose up --build -d
+$ docker-compose up --build -d
 ```
 
 ![alt text](image.png)
@@ -59,7 +59,7 @@ docker-compose up --build -d
 ## **3. Check Running Docker Containers**
 
 ```sh
-docker ps
+$ docker ps
 
 ```
 
@@ -69,7 +69,7 @@ docker ps
 ## **4. Access Running Docker Containers**
 
 ```sh
-http://localhost:8080
+$ http://localhost:8080
 
 ```
 
@@ -81,17 +81,17 @@ http://localhost:8080
 ```sh
 
 Access Database Container #mysqldb
-docker exec -it mysqldb bash
+$ docker exec -it mysqldb bash
 
 connect to a MySQL database with user #Akash 
 
-mysql -u akash -p
+$ mysql -u akash -p
 
 Enter Password as given in environment variables 
 
 SHow Databases in MYSQL 
 
-SHOW DATABASES;
+$ SHOW DATABASES;
 
 ```
 
@@ -100,7 +100,7 @@ SHOW DATABASES;
 ## **6. Check Web App Container Logs**
 
 ```sh
-docker logs $containerID
+$ docker logs $containerID
 
 ```
 
