@@ -15,11 +15,20 @@ services:
       - db
 
   db:
-    container_name: mssql
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mysqldb
+    image: mysql:8.0
+    restart: always
     environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=${SA_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
-      - "1433:1433"
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+
 
