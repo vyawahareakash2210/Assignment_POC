@@ -105,3 +105,33 @@ $ docker logs $containerID
 ```
 
 ![alt text](image-4.png)
+
+
+
+
+
+
+
+## ** Approach for Azure Deployment**
+
+1) Prepare your Azure resources :
+     1. Create an Azure Web App for Containers
+         Runtime: Linux
+         OS: Linux
+         SKU: Choose a suitable plan (B1/B2 for dev/test)
+
+     2. Create an Azure Container Registry (ACR)
+         This is where your Docker image will be pushed.
+
+2) Create Azure DevOps pipeline :
+
+    Below Will be steps in Pipeline to Build and deploy 
+      1.  task: UseDotNet@2    - This task will ensure that correct .NET SDK version is available on the build agent before compiling or running .NET applications
+
+      2. Docker@2 - This task will Build and Push Docker image into ACR 
+
+      3. AzureWebAppContainer@1 -   This task will Deploy to Azure Web App
+
+
+
+
