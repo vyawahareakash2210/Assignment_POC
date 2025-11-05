@@ -50,7 +50,7 @@ cd WebApplication1/
 ## **2. Build the Docker image & Run the application using Docker Compose**
 
 ```sh
-#docker-compose up --build -d
+docker-compose up --build -d
 ```
 
 ![alt text](image.png)
@@ -59,7 +59,7 @@ cd WebApplication1/
 ## **3. Check Running Docker Containers**
 
 ```sh
-#docker ps
+docker ps
 
 ```
 
@@ -69,7 +69,7 @@ cd WebApplication1/
 ## **4. Access Running Docker Containers**
 
 ```sh
-#http://localhost:8080
+http://localhost:8080
 
 ```
 
@@ -79,9 +79,19 @@ cd WebApplication1/
 ## **5. Access Running MySQL Containers**
 
 ```sh
-#docker exec -it mysqldb bash
-#mysql -u akash -p
-#SHOW DATABASES;
+
+Access Database Container #mysqldb
+docker exec -it mysqldb bash
+
+connect to a MySQL database with user #Akash 
+
+mysql -u akash -p
+
+Enter Password as given in environment variables 
+
+SHow Databases in MYSQL 
+
+SHOW DATABASES;
 
 ```
 
@@ -90,7 +100,7 @@ cd WebApplication1/
 ## **6. Check Web App Container Logs**
 
 ```sh
-#docker logs $containerID
+docker logs $containerID
 
 ```
 
