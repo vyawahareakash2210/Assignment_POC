@@ -1,29 +1,24 @@
-# ---- Build ----
+# Stage 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /app
 
+# Copy .csproj & restore
+COPY WebApplication1/*.csproj WebApplication1/
+RUN dotnet restore WebApplication1/WebApplication1.csproj
 
-# copy csproj and restore as distinct layers
-COPY src/SampleApi/SampleApi.csproj ./SampleApi/
-RUN dotnet restore SampleApi/SampleApi.csproj
+# Copy everything and publish
+COPY . .
+RUN dotnet publish WebApplication1/WebApplication1.csproj -c Release -o /app/out
 
-
-# copy everything else and publish
-COPY src/ ./
-WORKDIR /src/SampleApi
-RUN dotnet publish -c Release -o /app/publish --no-restore
-
-
-# ---- Runtime ----
+# Stage 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/publish ./
 
-
-# Use environment variables for configuration (example defaults)
-ENV ASPNETCORE_URLS="http://+:8080"
+# Environment variables support
+ENV ASPNETCORE_URLS=http://+:8080
 ENV ASPNETCORE_ENVIRONMENT=Production
 
+COPY --from=build /app/out .
 
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "SampleApi.dll"]
+ENTRYPOINT ["dotnet", "WebApplication1.dll"]
