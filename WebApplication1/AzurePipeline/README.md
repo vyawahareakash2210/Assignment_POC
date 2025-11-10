@@ -45,9 +45,22 @@ This Project Contains  below Tools  :
 ![alt text](image-4.png)
 
 
+## **  Environment variables **
 
+![alt text](image-6.png)
 
 ###  Application Running on  Azure WebApp Default domain
   
 
 ![alt text](image-5.png)
+
+
+## **  Web App  Log stream for Container Platform  **
+
+![alt text](image-7.png)
+
+
+## **  Web App  Log stream for Web App Runtime  **
+
+
+![alt text](image-8.png)
