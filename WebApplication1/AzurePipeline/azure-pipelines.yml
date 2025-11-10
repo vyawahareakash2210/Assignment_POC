@@ -1,0 +1,88 @@
+
+
+trigger:
+- main
+
+pool:
+  name: DevPool
+  demands:
+    - agent.name -equals Agent-1
+
+stages:
+  - stage: Build
+    displayName: 'Dotnet  Build'
+    jobs:
+      - job: Dotnet_Build
+        steps: 
+
+ # Install .NET 8 SDK
+          - task: UseDotNet@2
+            inputs:
+              packageName: 'sdk'
+              version: '8.0.x'
+              
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'restore'
+              projects: '**/*.csproj'
+              feedsToUse: 'select'
+
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
+              projects: '**/*.csproj'
+              arguments: '--configuration Release'   
+
+
+  - stage: Publish 
+    displayName: 'Dotnet Publish'
+    jobs:
+      - job: Dotnet_Publish
+        steps: 
+    
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'publish'
+              publishWebProjects: true
+              arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)/publish'
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/publish'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+
+
+
+  - stage: Docker_BuildAndPush 
+    displayName: 'Docker_BuildAndPush'
+    jobs:
+      - job: Docker_BuildAndPush
+        displayName: 'Docker_BuildAndPush'
+        steps:
+         - checkout: self
+         - task: CmdLine@2
+           inputs:
+             script: |
+               echo "Listing files:"
+                   ls -R $(Build.SourcesDirectory)
+
+         - task: Docker@2
+           inputs:
+              containerRegistry: 'AzureContainerRegistry'
+              repository: 'POC123'
+              command: 'buildAndPush'
+              Dockerfile: '$(Build.SourcesDirectory)/WebApplication1/Dockerfile'
+
+
+  - stage: DeployAppService
+    displayName: 'DeployAppService'
+    jobs:
+    - job: DeployAppService
+      displayName: 'DeployAppService'
+      steps:
+        - task: AzureWebAppContainer@1
+          inputs:
+            azureSubscription: 'POCAssignement'
+            appName: 'TestPOC1423'
+            containers: 'poc123.azurecr.io/poc123:$(Build.BuildId)'
